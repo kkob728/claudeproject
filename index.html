@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Night Survivors - 어둠의 생존자</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hudButtons" class="hidden">
+    <button id="pauseBtn" class="icon-btn" title="일시정지 (ESC / P)">II</button>
+    <button id="muteBtn" class="icon-btn" title="음소거 (M)">소리 ON</button>
+  </div>
+
+  <!-- 시작 화면 -->
+  <div id="titleScreen" class="overlay">
+    <div class="panel">
+      <h1>NIGHT SURVIVORS</h1>
+      <p class="sub">어둠의 생존자 — 밤이 끝날 때까지 살아남아라</p>
+      <button id="startBtn" class="btn primary">게임 시작</button>
+      <div class="controls">
+        <div><b>이동</b> WASD / 방향키 (모바일: 화면 드래그 조이스틱)</div>
+        <div><b>공격</b> 자동</div>
+        <div><b>일시정지</b> ESC / P &nbsp;·&nbsp; <b>음소거</b> M</div>
+        <div><b>레벨업 선택</b> 클릭 또는 1 / 2 / 3</div>
+      </div>
+      <div id="titleBest" class="best"></div>
+    </div>
+  </div>
+
+  <!-- 레벨업 화면 -->
+  <div id="levelUpScreen" class="overlay hidden">
+    <div class="panel wide">
+      <h2>레벨 업!</h2>
+      <p class="sub" id="levelUpSub"></p>
+      <div id="levelCards" class="cards"></div>
+      <p class="hint">클릭하거나 1 / 2 / 3 키로 선택</p>
+    </div>
+  </div>
+
+  <!-- 일시정지 화면 -->
+  <div id="pauseScreen" class="overlay hidden">
+    <div class="panel">
+      <h2>일시정지</h2>
+      <div id="pauseBuild" class="build"></div>
+      <div class="btn-row">
+        <button id="resumeBtn" class="btn primary">계속하기 (ESC)</button>
+        <button id="pauseRestartBtn" class="btn">다시 시작</button>
+        <button id="pauseTitleBtn" class="btn">타이틀로</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 게임오버 화면 -->
+  <div id="gameOverScreen" class="overlay hidden">
+    <div class="panel">
+      <h2 class="danger">게임 오버</h2>
+      <div id="newRecord" class="new-record hidden">★ 신기록! ★</div>
+      <div class="stats">
+        <div><span>생존 시간</span><b id="goTime">00:00</b></div>
+        <div><span>처치 수</span><b id="goKills">0</b></div>
+        <div><span>도달 레벨</span><b id="goLevel">1</b></div>
+      </div>
+      <div id="goBest" class="best"></div>
+      <div class="btn-row">
+        <button id="restartBtn" class="btn primary">다시 시작 (R)</button>
+        <button id="goTitleBtn" class="btn">타이틀로</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
