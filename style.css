@@ -176,3 +176,85 @@ h2.danger { color: #ff5a5a; }
   .card { flex-basis: 100%; max-width: none; padding: 12px; }
   .controls { font-size: 13px; }
 }
+
+/* ---------- 시작 무기 선택 ---------- */
+.gold { color: #ffd54f; }
+.cards.six .card { flex: 1 1 30%; max-width: 270px; }
+.card.last { border-color: #e3753f; }
+.evo-hint {
+  margin-top: 8px;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #ffd9fb;
+  background: rgba(255, 107, 240, 0.1);
+  border: 1px dashed rgba(255, 107, 240, 0.45);
+  border-radius: 6px;
+}
+.evo-hint b { color: #ffd54f; }
+
+/* ---------- 진화 카드 ---------- */
+.card.evo {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #ffd54f;
+  background: linear-gradient(135deg, #3d2a06, #3a0f45 55%, #0d2b4a);
+  animation: evoGlow 1.1s ease-in-out infinite alternate;
+}
+.card.evo::before { /* 지나가는 빛 */
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(20deg);
+  animation: evoShine 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.card.evo:hover { border-color: #fff; }
+.card.evo .name {
+  font-size: 19px;
+  background: linear-gradient(90deg, #ffd54f, #ff6bf0, #6fd3ff, #ffd54f);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: evoText 3s linear infinite;
+}
+.card.evo .icon {
+  background: conic-gradient(#ffd54f, #ff6bf0, #6fd3ff, #7dff9a, #ffd54f) !important;
+  border-color: #fff;
+  animation: evoSpin 2s linear infinite;
+}
+.card.evo .tag.new { color: #fff3b0; letter-spacing: 1px; }
+.card.evo .desc b { color: #ffd54f; }
+@keyframes evoGlow {
+  from { box-shadow: 0 0 12px rgba(255, 200, 60, 0.45), inset 0 0 12px rgba(255, 200, 60, 0.15); }
+  to   { box-shadow: 0 0 32px rgba(255, 107, 240, 0.85), inset 0 0 20px rgba(111, 211, 255, 0.25); }
+}
+@keyframes evoShine { 0% { left: -60%; } 60%, 100% { left: 130%; } }
+@keyframes evoText { to { background-position: 300% 0; } }
+@keyframes evoSpin { to { transform: rotate(360deg); } }
+
+/* ---------- 진화 도감 (일시정지) ---------- */
+.evo-guide { margin-top: 14px; text-align: left; }
+.evo-guide h3 { font-size: 15px; color: #ffd54f; margin-bottom: 6px; text-align: center; }
+.evo-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  margin: 4px 0;
+  font-size: 13px;
+  background: #0f1511;
+  border-radius: 6px;
+}
+.evo-row .st { color: #7d8d80; white-space: nowrap; }
+.evo-row.ready { border: 1px solid #ff6bf0; }
+.evo-row.ready .st { color: #ff9cf5; font-weight: 700; }
+.evo-row.done .st { color: #ffd54f; font-weight: 700; }
+.chip.evolved { color: #ffd54f; font-weight: 700; }
+
+@media (max-width: 600px) {
+  .cards.six .card { flex: 1 1 100%; max-width: none; }
+  .evo-row { flex-direction: column; gap: 2px; }
+}
